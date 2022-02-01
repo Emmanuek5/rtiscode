@@ -1,0 +1,24 @@
+Options +FollowSymLinks
+  RewriteEngine On
+
+  RewriteCond %{SCRIPT_FILENAME} !-d
+  RewriteCond %{SCRIPT_FILENAME} !-f
+
+  RewriteRule ^@(.*)?$ ./user.php?name=$1 [NC,L]
+
+  RewriteRule ^@(.*)/ ./user.php?name=$1 [NC,L]
+
+
+  RewriteEngine on
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.php -f
+  RewriteRule ^(.*)$ $1.php
+
+  RewriteEngine On
+
+  RewriteCond %{SCRIPT_FILENAME} !-d
+  RewriteCond %{SCRIPT_FILENAME} !-f
+
+  RewriteRule ^message/([0-9a-zA-Z]+)?$ ./chat.php?user=$1 [NC,L]
+
+  RewriteRule ^message(.*) ./404.php [NC,L]
